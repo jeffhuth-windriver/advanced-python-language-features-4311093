@@ -13,9 +13,24 @@
 
 
 def string_combiner(*args, unique=False):
+    """
+    string_combiner(*args, unique=False)
+    Returns a string that concatenates the args (strings and ints)
+    Parameters:
+    args: one or more strings and ints. Other types are ignored.
+    unique: Boolean, if True, only include 1 instance of each character
+    """
     result = ""
-
-    # YOUR CODE HERE
+    for arg in args:
+        if isinstance(arg, int):
+            result += str(arg)
+        elif isinstance(arg, str):
+            result += arg
+    
+    # If unique is true, convert to a set (to make characters unique) and then a string
+    if unique:
+        newresult = set(result)
+        result = "".join(newresult)
 
     return result
 
